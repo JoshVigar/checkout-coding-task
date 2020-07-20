@@ -10,6 +10,8 @@ class Discounts
 
   def calculatePrice(item, price, count)
     case discounts.fetch(item, nil)
+    when DiscountsDB::HALF_PRICE_RESTRICTED
+      return halfPriceRestricted(price, count)
     when DiscountsDB::HALF_PRICE
       return halfPrice(price, count)
     when DiscountsDB::TWO_FOR_ONE
@@ -22,6 +24,10 @@ class Discounts
 
   def halfPrice(price, count)
     return price * count / 2.0
+  end
+
+  def halfPriceRestricted(price, count)
+    return (price * (count - 1)) + (price / 2)
   end
 
   def twoForOne(price, count)
