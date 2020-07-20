@@ -16,6 +16,8 @@ class Discounts
       return halfPrice(price, count)
     when DiscountsDB::TWO_FOR_ONE
       return twoForOne(price, count)
+    when DiscountsDB::THREE_FOR_TWO
+      return threeForTwo(price, count)
     else
       puts 'reached end of case'
       return price * count
@@ -31,6 +33,12 @@ class Discounts
   end
 
   def twoForOne(price, count)
-    (count > 1) ? (price * (count % 2)) + (price * count / 2) : price * count
+    return(
+      (count > 1) ? (price * (count % 2)) + (price * count / 2) : price * count
+    )
+  end
+
+  def threeForTwo(price, count)
+    return price * (count - (count / 3))
   end
 end

@@ -79,12 +79,12 @@ RSpec.describe Checkout do
       end
     end
 
-    # context 'when a buy 3 get 1 free offer applies to mangos' do
-    #   before { 4.times { checkout.scan(:mango) } }
+    context 'when a buy 3 get 1 free offer applies to mangos' do
+      before { 4.times { checkout.scan(:mango) } }
 
-    #   it 'returns the discounted price for the basket' do
-    #     expect(total).to eq(600)
-    #   end
-    # end
+      it 'returns the discounted price for the basket' do
+        expect(total).to eq(600)
+      end
+    end
   end
 end
